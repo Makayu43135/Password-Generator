@@ -9,3 +9,4 @@ password = ''.join(secrets.choice(alphabet + symbols) for i in range(password_le
 print("Generated Password: " + password)
 
 x = input("Done, press Enter to exit")
+# simple code isnt it?
