@@ -1,18 +1,37 @@
-import secrets
-import string
+import secrets as sc
+import string as strg
+import sys
+import pyperclip as pyp
+import time
 
-password_length = int(input("Please enter the length of the password(CANNOT BE HIGHER THAN 9999999): "))
+alphabet = strg.ascii_letters + strg.digits + strg.punctuation
 
-alphabet = string.ascii_letters + string.digits
-symbols = "`~!@#$%^&*()_+|\}{:?><,./;'[]"
-password = ''.join(secrets.choice(alphabet + symbols) for i in range(password_length))
-#password max cap
-if password_length >= 10000000:
-    print("Password length cannot be higher than 9999999!")
-    int(input("Please enter the length of the password(CANNOT BE HIGHER THAN 9999999): "))
-    print(password)
-else:
-    print(password)
+password_length = int(input("Please enter the length of the password you want to generate (CANNOT BE HIGHER THAN 9999999): "))
 
-#enter to exit (OMG!!!)
-x = input("Done, press Enter to exit")
+if password_length > 9999999:
+    print("an error occured")
+    time.sleep(3)
+    sys.exit()
+    
+password = "".join(sc.choice(alphabet) for _ in range(password_length))
+
+print(f"Your generated password is: {password}")
+
+copy_password = input("Do you want to copy the password to your clipboard? (y/n) ")
+copy_password.lower
+
+while copy_password != "y" and copy_password != "n":
+    copy_password = input("Incorrect answer! Please enter if you want to copy the password or not: ")
+
+if copy_password == "n":
+    print("alr cool goodbye")
+    time.sleep(2)
+    sys.exit()
+
+if copy_password == "y":
+    pyp.copy(password)
+    print("Password Copied!")
+
+print("i've done my stuff, goodbye!!")
+time.sleep(3)
+sys.exit()
